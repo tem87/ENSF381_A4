@@ -1,23 +1,24 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-    return (
-        <header>
-        <nav>
-            <ul>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <Link to="/products">Products</Link>
-            </li>
-            <li>
-                <Link to="/login">Login</Link>
-            </li>
-            </ul>
-        </nav>
-        </header>
-    );
-    };
+  return (
+    <header className="header">
+    <div className="header-content"> 
+        <div className="logo">
+            <img src="/images/logo.png" alt="Company Logo" />
+        </div>
+        <div className="company-name">BloomBoom</div>
+    </div>
+      
+      <nav>
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/products" className="nav-link">Products</Link>
+        <Link to="/login" className="nav-link">Login</Link>
+      </nav>
+    </header>
+  );
+};
+
 export default Header;
+

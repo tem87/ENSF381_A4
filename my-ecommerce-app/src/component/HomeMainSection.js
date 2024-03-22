@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import reviewsData from '../data/review';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import reviewsData from '../data/reviews';
 
 const HomeMainSection = () => {
-    //hold data of the review.js
+    // Hold data of the review.js
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        // fetching random reviews from reviews.js
+        // Fetching random reviews from reviews.js
         const randomReviews = () => {
           // Shuffle the review content
           const shuffledReviews = reviewsData.sort(() => 0.5 - Math.random());
@@ -17,28 +18,36 @@ const HomeMainSection = () => {
     }, []); 
 
     return (
-        <section className="home-main">
-          <div className="about">
+        <main>
+          <section className="about-us">
             <h2>About Us</h2>
-            <p>Company's vision and mission description goes here.</p>
-            <button>Shop Now</button>
-          </div>
-          <div className="customer-reviews">
+            <p>We are a small business that specializes in selling indoor plants and flowers! 
+              We offer a variety of products that are perfect for any occasion. 
+              Our goal is to provide our customers with the best quality products and customer service. 
+              We are dedicated to making sure that our customers are satisfied with their purchase.
+              We hope you enjoy your shopping experience with us!</p>
+          </section>
+    
+          <section className="shop-now">
+            <Link to="/products"><button className="shop-now-btn">Shop Now</button></Link>
+          </section>
+    
+          <section className="customer-reviews">
             <h2>Customer Reviews</h2>
-            {/* Map over reviews array and display each review */}
-            {reviews.map((review, index) => (
-              <div key={index} className="review">
-                <p>{review.customerName}</p>
-                <p>{review.reviewContent}</p>
-                {/* Display rating stars based on review's star rating */}
-                <div className="rating">
-                  {'★'.repeat(review.stars)}
+            <div className="review-container">
+              {reviews.map((review, index) => (
+                <div className="review" key={index}>
+                  <p>
+                    <span className="customer-name"><b>{review.customerName}</b></span><br />
+                    {review.reviewContent}
+                    <p className="rating">{'⭐'.repeat(review.stars)}</p>
+                  </p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        </main>
       );
-};
+}
 
 export default HomeMainSection;
