@@ -1,31 +1,35 @@
-/*
-In summary,
-
-ProductItem displays indivdual product details and the add to cart button. 
-When we press the "add to cart" button the associated data will be
-displayed as a CartItem.
-
-
- */
-
 import React from 'react';
 
-const CartItem = ({ item, removeFromCart }) => {
-  const { id, image, name, price, quantity } = item;
+const CartItem = ({ item, updateQuantity, removeFromCart }) => {
+  const { id, name, price, quantity, image } = item;
 
-  const handleRemove = () => {
-    removeFromCart(id);
+  // Increase quantity by 1
+  const increaseQuantity = () => {
+    updateQuantity(id, quantity + 1);
+  };
+
+  // Decrease quantity by 1
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      updateQuantity(id, quantity - 1);
+    } else {
+      removeFromCart(id);
+    }
   };
 
   return (
     <div className="cart-item">
       <img src={image} alt={name} />
-      <div>
-        <h4>{name}</h4>
+      <div className="cart-item-details">
+        <h3>{name}</h3>
         <p>Price: ${price}</p>
         <p>Quantity: {quantity}</p>
-        <p>Total: ${price * quantity}</p>
-        <button onClick={handleRemove}>Remove</button>
+        <p>Total: ${(price * quantity).toFixed(2)}</p>
+      </div>
+      <div className="cart-item-actions">
+        <button onClick={increaseQuantity}>+</button>
+        <button onClick={decreaseQuantity}>-</button>
+        <button onClick={() => removeFromCart(id)}>Remove</button>
       </div>
     </div>
   );
