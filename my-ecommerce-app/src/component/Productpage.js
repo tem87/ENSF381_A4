@@ -47,7 +47,7 @@ const Productpage = () => {
         <div style={{ flex: 1 }}>
           <ProductList products={products} addToCart={addToCart} />
         </div>
-        <div style={{ flex: 1, marginLeft: '100px' }}>
+        <div style={{ flex: 1, marginLeft: '50%' }}>
           <Cart cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />
         </div>
       </div>
