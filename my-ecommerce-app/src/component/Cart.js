@@ -12,7 +12,7 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
     <div className="cart">
       <h2>Cart</h2>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p>Total (in cart): $0.00.</p>
       ) : (
         <>
           {cart.map((item) => (
