@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import Cart from './Cart';
-import product from '../data/products';
+import Header from './Header';
+import Footer from './Footer';
+import products from '../data/products';
 
 const Productpage = () => {
   const [cart, setCart] = useState([]);
@@ -40,8 +42,16 @@ const Productpage = () => {
 
   return (
     <div className="product-page">
-      <ProductList products={product} addToCart={addToCart} />
-      <Cart cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />
+      <Header />
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ flex: 1 }}>
+          <ProductList products={products} addToCart={addToCart} />
+        </div>
+        <div style={{ flex: 1, marginLeft: '20px' }}>
+          <Cart cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };

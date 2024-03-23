@@ -9,8 +9,11 @@ const ProductItem = ({ product, addToCart }) => {
 
   return (
     <div className="product-item" onMouseEnter={toggleDetails} onMouseLeave={toggleDetails}>
-      {/* Use a relative path to the public directory */}
-      <img src={`/images/${product.image}`} alt={product.name} />
+      <img
+        src={`/${product.image}`}
+        alt={product.name}
+        style={{ width: '200px', height: '200px', objectFit: 'cover' }}
+      />
       <h3>{product.name}</h3>
       <p className={showDesc ? "show" : "hide"}>{product.description}</p>
       <p>Price: ${product.price}</p>

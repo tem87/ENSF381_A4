@@ -3,33 +3,29 @@ import React from 'react';
 const CartItem = ({ item, updateQuantity, removeFromCart }) => {
   const { id, name, price, quantity, image } = item;
 
-  // Increase quantity by 1
-  const increaseQuantity = () => {
-    updateQuantity(id, quantity + 1);
+  const handleUpdateQuantity = (newQuantity) => {
+    updateQuantity(id, newQuantity);
   };
 
-  // Decrease quantity by 1
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      updateQuantity(id, quantity - 1);
-    } else {
-      removeFromCart(id);
-    }
+  const handleRemoveFromCart = () => {
+    removeFromCart(id);
   };
 
   return (
     <div className="cart-item">
-      <img src={image} alt={name} />
-      <div className="cart-item-details">
-        <h3>{name}</h3>
-        <p>Price: ${price}</p>
-        <p>Quantity: {quantity}</p>
-        <p>Total: ${(price * quantity).toFixed(2)}</p>
+      <div className="cart-item-image">
+        {/* Apply fixed width and height for the images */}
+        <img src={`/${image}`} alt={name} style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
       </div>
-      <div className="cart-item-actions">
-        <button onClick={increaseQuantity}>+</button>
-        <button onClick={decreaseQuantity}>-</button>
-        <button onClick={() => removeFromCart(id)}>Remove</button>
+      <div className="cart-item-details">
+        <p>{name}</p>
+        <p>Price: ${price}</p>
+        <div className="cart-item-quantity">
+          <button onClick={() => handleUpdateQuantity(quantity - 1)}>-</button>
+          <span>{quantity}</span>
+          <button onClick={() => handleUpdateQuantity(quantity + 1)}>+</button>
+        </div>
+        <button onClick={handleRemoveFromCart}>Remove</button>
       </div>
     </div>
   );
