@@ -1,13 +1,30 @@
+/*
+=========================================================
+Name        : CartItem.js
+Assignment  : 4
+Author(s)   : Thalia Espinoza,  Brandon Nguyen
+UCID        : 30195212, 30169800
+Submission  : 03/25/2024
+Description : cart item implementation
+=========================================================
+*/
 import React from 'react';
 
 const CartItem = ({ item, updateQuantity, removeFromCart }) => {
   const { id, name, price, quantity, image } = item;
 
-
-
   const handleRemoveFromCart = () => {
-    removeFromCart(id);
+    if (quantity > 1) {
+        updateQuantity(id, quantity - 1);
+    } else {
+        removeFromCart(id);
+    }
   };
+
+  const calculatePrice = () => {
+    return (price * quantity).toFixed(2);
+  }
+
 
   return (
     <div className="cart-item">
@@ -23,6 +40,7 @@ const CartItem = ({ item, updateQuantity, removeFromCart }) => {
           <p>Quantity: {quantity}</p>
           
         </div>
+        <p>Total Price: ${calculatePrice()}</p>
         <button onClick={handleRemoveFromCart}>Remove</button>
       </div>
     </div>

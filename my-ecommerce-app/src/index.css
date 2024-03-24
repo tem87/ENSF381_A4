@@ -52,3 +52,12 @@ nav {
 .company-name {
   color: black; /* Adjust text color for better visibility */
 }
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+

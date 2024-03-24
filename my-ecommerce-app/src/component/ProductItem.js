@@ -1,3 +1,13 @@
+/*
+=========================================================
+Name        : ProductItem.js
+Assignment  : 4
+Author(s)   : Thalia Espinoza,  Brandon Nguyen
+UCID        : 30195212, 30169800
+Submission  : 03/25/2024
+Description : product item implementation 
+=========================================================
+*/
 import React, { useState} from 'react';
 
 const ProductItem = ({ product, addToCart }) => {

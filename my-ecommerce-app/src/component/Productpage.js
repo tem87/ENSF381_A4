@@ -1,3 +1,14 @@
+/*
+=========================================================
+Name        : login.html
+Assignment  : 4
+Author(s)   : Thalia Espinoza,  Brandon Nguyen
+UCID        : 30195212, 30169800
+Submission  : 03/25/2024
+Description : product page implementation
+=========================================================
+*/
+
 import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import Cart from './Cart';
@@ -6,7 +17,11 @@ import Footer from './Footer';
 import products from '../data/products';
 
 const Productpage = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    return storedCart;
+  
+  });
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];

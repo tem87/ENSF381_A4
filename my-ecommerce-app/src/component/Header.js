@@ -1,3 +1,14 @@
+/*
+=========================================================
+Name        : Header.js
+Assignment  : 4
+Author(s)   : Thalia Espinoza,  Brandon Nguyen
+UCID        : 30195212, 30169800
+Submission  : 03/25/2024
+Description : header implementation 
+=========================================================
+*/
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 

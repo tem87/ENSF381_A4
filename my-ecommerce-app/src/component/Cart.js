@@ -1,3 +1,14 @@
+/*
+=========================================================
+Name        : Cart.js
+Assignment  : 4
+Author(s)   : Thalia Espinoza,  Brandon Nguyen
+UCID        : 30195212, 30169800
+Submission  : 03/25/2024
+Description :cart implementation
+=========================================================
+*/
+
 import React from 'react';
 import CartItem from './CartItem';
 
@@ -23,7 +34,7 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
               removeFromCart={removeFromCart}
             />
           ))}
-          <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
+          <h3>Total Price (in cart): ${totalPrice.toFixed(2)}</h3>
         </>
       )}
     </div>
