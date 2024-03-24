@@ -44,7 +44,7 @@ const HomeMainSection = () => {
                   </p>
                 </div>
               ))}
-            </div>
+            </div>            
           </section>
         </main>
       );
