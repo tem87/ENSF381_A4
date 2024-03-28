@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'; 
 import Header from './Header';
-import Footer from './Footer';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import Footer from './Footer';
 
 const LoginPage = () => {
-    const [isLogin, setIsLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(true);
+  const history = useHistory(); // Use useHistory here
 
-    const switchForm = () => {
-        setIsLogin(!isLogin);
-    };
+  const switchForm = () => {
+    setShowLogin(!showLogin);
+  };
 
-    return (
-        <div>
-            <Header />
-            <div>
-                {isLogin ? <LoginForm switchToSignup={switchForm} /> : <SignupForm switchToLogin={switchForm} />}
-            </div>
-            <Footer />
-        </div>
-    );
-    };
-    export default LoginPage;
+  const handleLogin = () => {
+    history.push('/products');
+  };
+
+  const handleSignup = () => {
+
+    history.push('/products');
+  };
+
+  return (
+    <div>
+      <Header />
+      {showLogin ? <LoginForm switchToSignup={switchForm} handleLogin={handleLogin} /> : <SignupForm switchToLogin={switchForm} handleSignup={handleSignup} />}
+      <Footer />
+    </div>
+  );
+};
+
+export default LoginPage;
