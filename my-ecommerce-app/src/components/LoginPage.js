@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import Header from './Header';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
@@ -7,25 +7,25 @@ import Footer from './Footer';
 
 const LoginPage = () => {
   const [showLogin, setShowLogin] = useState(true);
-  const history = useHistory(); // Use useHistory here
+  const navigate = useNavigate(); 
 
   const switchForm = () => {
     setShowLogin(!showLogin);
   };
 
   const handleLogin = () => {
-    history.push('/products');
+    navigate.push('/products');
   };
 
   const handleSignup = () => {
 
-    history.push('/products');
+    navigate.push('/products');
   };
 
   return (
     <div>
       <Header />
-      {showLogin ? <LoginForm switchToSignup={switchForm} handleLogin={handleLogin} /> : <SignupForm switchToLogin={switchForm} handleSignup={handleSignup} />}
+      {showLogin ? <LoginForm goToSignup={switchForm} handleLogin={handleLogin} /> : <SignupForm goToLogin={switchForm} handleSignup={handleSignup} />}
       <Footer />
     </div>
   );
